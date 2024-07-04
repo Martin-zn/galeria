@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chama</title>
+</head>
+<body>
+    <h1>Chama</h1>
+
+    {% if favoriteNumbers %}
+    <h1>Lista de mis numeros favoritos</h1>
+    {% for x in favoriteNumbers %}
+    <tr>
+        {{x}}
+    </tr>
+    {% endfor %}
+    {% endif %}
+
+
+
+    <div id="idMensaje">
+        {% if mensaje %}
+            {{mensaje}}
+        {% endif %}
+    </div>
+</body>
+</html>

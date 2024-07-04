@@ -1,0 +1,14 @@
+.card-custom {
+    height: 350px; 
+    width: 300px; 
+    margin-bottom: 20px; 
+}
+.card-img-top-custom {
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+}
+.card-body-custom {
+    padding: 10px; 
+}
+

@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+    <div class='container text-center'>
+        <h1 class="display-1">PRINCIPLAES ARTISTAS</h1>
+        </div>
+    <div class="artistas-container">
+        <div class="container-fluid">
+            <div class="row g-4">
+                {% for artista in artistas %}
+                    <div class="col">
+                        <div class="artista-card">
+                            <img src="{{ artista.imgUrl }}" class="artista-img" alt="{{ artista.nombre }}">
+                            <div class="card-body">
+                                <h5 class="card-title  text-center">{{ artista.nombre }}</h5>
+                                <p class="card-text text-center">{{ artista.descripcion|default:"sin descripcion" }}</p>
+                                <p class="card-text text-center">Cantidad de obras: {{ artista.cantidad_obras }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container-fluid mt-3">
+            <h4 class="text-center"><a href="{% url 'artistas' %}">Todos los artistas...</a></h4>
+        </div>
+    </div>
+    <br/>
+    <div class='container text-center'>
+        <h1 class="display-1">PRICIPALES OBRAS</h1>
+        </div>
+    <div class="artistas-container">
+        <div class="container-fluid">
+            <div class="row g-4">
+                {% for obra in obras %}
+                    <div class="col">
+                        <div class="artista-card">
+                            <img src="{{ obra.imgUrl }}" class="artista-img" alt="{{ obra.nombre }}">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{ obra.nombre }}</h5>
+                                <p class="card-text text-center">{{ obra.descripcion|default:"sin descripcion" }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container-fluid mt-3">
+            <h4 class="text-center"><a href="{% url 'obras' %}">Todas las obras...</a></h4>
+        </div>
+    </div>
+    
+
+</body>
+</html>

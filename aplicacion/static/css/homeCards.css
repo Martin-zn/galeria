@@ -1,0 +1,23 @@
+.artistas-container {
+
+    padding: 20px 0;
+    border: 2px solid black;
+
+}
+.artista-card {
+    border: 2px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 100%;
+}
+.artista-img {
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+}
+.card-body {
+    padding: 15px;
+}
+.card-title {
+    font-weight: bold;
+}

@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+
+      
+        {% comment %} <div class="carousel-indicators" id="carouselIndicators">
+          {% for obra in ultimasObras %}
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Diapositiva {{ forloop.counter }}"></button>
+          {% endfor %}
+        </div> {% endcomment %}
+      
+        <div class="carousel-inner" id="carouselItems">
+          {% for obra in ultimasObras %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+              <img src="{{ obra.imgUrl }}" class="d-block w-100 carousel-img" alt="{{ obra.nombre }}">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>{{ obra.nombre }}</h5>
+                <p>{{ obra.descripcion|truncatechars:100 }}</p>
+                <a href="{{ obra.imgUrl }}" class="btn btn-primary" target="_blank">Ver más</a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+</body>
+</html>

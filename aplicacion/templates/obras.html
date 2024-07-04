@@ -1,0 +1,30 @@
+
+{% extends "firstTemplate.html" %}
+{% block title %} OBRAS {% endblock %}
+
+{% block content %}
+
+<div class="container p-4">
+    <div class="row p-4" id="allCardsContainer">
+        {% for obra in obras %}
+            <div class="col-md-3 d-flex align-items-stretch">
+                <div class="card text-center card-custom">
+                    <a href="{{obra.link }}" target="_blank">
+                        <img src="{{ obra.imgUrl }}" class="card-img-top card-img-top-custom img-thumbnail" alt="{{ obra.nombre }}">
+                    </a>
+                    <div class="card-body card-body-custom">
+                        <h5 class="card-title">{{ obra.nombre }}</h5>
+                        <p class="card-text">{{ obra.descripcion }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock %}
