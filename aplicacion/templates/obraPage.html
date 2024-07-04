@@ -1,0 +1,29 @@
+
+{% extends "firstTemplate.html" %}
+{% block title %} {{obra.nombre}} {% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ obra.imgUrl }}" class="obra-image img-thumbnail" alt="{{ obra.nombre }}">
+        </div>
+        <div class="col-md-6 obra-details">
+            <h2>{{ obra.nombre }}</h2>
+            <p><strong>Descripción:</strong> {{ obra.descripcion }}</p>
+            <p><strong>Fecha de creación:</strong> {{ obra.fecha_creacion }}</p>
+            <p><strong>Artista:</strong> {{ obra.id_artista.nombre }} {{ obra.id_artista.apellido_paterno }} {{ obra.id_artista.apellido_materno }}</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

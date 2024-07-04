@@ -10,16 +10,18 @@
         <div class="container-fluid">
             <div class="row g-4">
                 {% for artista in artistas %}
-                    <div class="col">
-                        <div class="artista-card">
+                <div class="col">
+                    <div class="artista-card">
+                        <a href="{% url 'artista_page' nombre=artista.nombre %}">
                             <img src="{{ artista.imgUrl }}" class="artista-img" alt="{{ artista.nombre }}">
-                            <div class="card-body">
-                                <h5 class="card-title  text-center">{{ artista.nombre }}</h5>
-                                <p class="card-text text-center">{{ artista.descripcion|default:"sin descripcion" }}</p>
-                                <p class="card-text text-center">Cantidad de obras: {{ artista.cantidad_obras }}</p>
-                            </div>
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{ artista.nombre }} {{ artista.apellido_paterno }} {{ artista.apellido_materno }}</h5>
+                            <p class="card-text text-center">{{ artista.descripcion|default:"sin descripcion" }}</p>
+                            <p class="card-text text-center">Cantidad de obras: {{ artista.cantidad_obras }}</p>
                         </div>
                     </div>
+                </div>
                 {% endfor %}
             </div>
         </div>
@@ -37,17 +39,23 @@
                 {% for obra in obras %}
                     <div class="col">
                         <div class="artista-card">
+                            <a href="{% url 'obra_page' nombre=obra.nombre %}" >
                             <img src="{{ obra.imgUrl }}" class="artista-img" alt="{{ obra.nombre }}">
+                            </a>
                             <div class="card-body">
                                 <h5 class="card-title text-center">{{ obra.nombre }}</h5>
                                 <p class="card-text text-center">{{ obra.descripcion|default:"sin descripcion" }}</p>
+                                
+                            </div>
+                            <div class="artist-name text-center">
+                                <p class="card-text">{{ obra.id_artista.nombre }} {{ obra.id_artista.apellido_paterno }} {{ obra.id_artista.apellido_materno }}</p>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
         </div>
-        <div class="container-fluid mt-3">
+        <div class="container-fluid mt-3 ">
             <h4 class="text-center"><a href="{% url 'obras' %}">Todas las obras...</a></h4>
         </div>
     </div>

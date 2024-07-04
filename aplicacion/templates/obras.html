@@ -9,7 +9,7 @@
         {% for obra in obras %}
             <div class="col-md-3 d-flex align-items-stretch">
                 <div class="card text-center card-custom">
-                    <a href="{{obra.link }}" target="_blank">
+                    <a href="{% url 'obra_page' nombre=obra.nombre %}" >
                         <img src="{{ obra.imgUrl }}" class="card-img-top card-img-top-custom img-thumbnail" alt="{{ obra.nombre }}">
                     </a>
                     <div class="card-body card-body-custom">

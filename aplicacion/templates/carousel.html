@@ -19,7 +19,7 @@
               <div class="carousel-caption d-none d-md-block">
                 <h5>{{ obra.nombre }}</h5>
                 <p>{{ obra.descripcion|truncatechars:100 }}</p>
-                <a href="{{ obra.imgUrl }}" class="btn btn-primary" target="_blank">Ver más</a>
+                <a href="{% url 'obra_page' nombre=obra.nombre %}" class="btn btn-primary" target="_blank">Ver más</a>
               </div>
             </div>
           {% endfor %}

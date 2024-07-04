@@ -1,6 +1,6 @@
 import datetime
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from aplicacion.models import Artista, Obras
 
@@ -72,4 +72,20 @@ def artistas_view(request):
 
     context={'artistas':artistas_data}
     return render(request, 'artistas.html', context)
+
+def obra_page(request, nombre):
+    obra = get_object_or_404(Obras, nombre=nombre)
+    context = {'obra': obra}
+    return render(request, 'obraPage.html', context)
+
+def artista_page(request, nombre):
+    artista = Artista.objects.get(nombre=nombre)
+    obras = Obras.objects.filter(id_artista=artista)
+    context = {'artista': artista, 'obras': obras}
+    return render(request, 'artistaPage.html', context)
+
+
+
+
+
 

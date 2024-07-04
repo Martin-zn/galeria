@@ -1,0 +1,53 @@
+
+{% extends "firstTemplate.html" %}
+{% block title %} {{artista.nombre}} {% endblock %}
+
+{% block content %}
+
+<div class="container p-4">
+    <div class="row artist-info">
+        <div class="col-md-4">
+            <img src="{{ artista.imgUrl }}" class="img-thumbnail" alt="{{ artista.nombre }}">
+        </div>
+        <div class="col-md-8">
+            <h2>{{ artista.nombre }} {{ artista.apellido_paterno }} {{ artista.apellido_materno }}</h2>
+            <p>Descripción: {{ artista.descripcion|default:"sin descripcion" }}</p>
+            <p>Fecha de Nacimiento: {{ artista.fecha_nacimiento }}</p>
+            <div class="artist-contact">
+                <div>
+                    <h3>Contacto:</h3>
+                    <p>Email: {{ artista.email }}</p>
+                    <p>Teléfono: {{ artista.telefono }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h3>Mas obras de : {{ artista.nombre }} {{ artista.apellido_paterno }} {{ artista.apellido_materno }}</h3>
+            <div class="obras-container">
+                {% for obra in obras %}
+                    <div class="card obra-card">
+                        <a href="{% url 'obra_page' nombre=obra.nombre %}">
+                            <img src="{{ obra.imgUrl }}" alt="{{ obra.nombre }}">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ obra.nombre }}</h5>
+                            <p class="card-text">{{ obra.descripcion|default:"sin descripcion" }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

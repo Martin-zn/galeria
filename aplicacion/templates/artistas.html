@@ -9,7 +9,7 @@
         {% for artista in artistas %}
             <div class="col-md-3 d-flex align-items-stretch">
                 <div class="card text-center card-custom">
-                    <a href="{{artista.link }}" target="_blank">
+                    <a href="{% url 'artista_page' nombre=artista.nombre %}" >
                         <img src="{{ artista.imgUrl }}" class="card-img-top card-img-top-custom img-thumbnail" alt="{{ artista.nombre }}">
                     </a>
                     <div class="card-body card-body-custom">

@@ -1,0 +1,9 @@
+.obra-image {
+    max-width: 100%;
+    height: auto;
+}
+.obra-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

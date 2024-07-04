@@ -21,3 +21,12 @@
 .card-title {
     font-weight: bold;
 }
+.artist-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+    padding: 5px;
+    text-align: center;
+}
