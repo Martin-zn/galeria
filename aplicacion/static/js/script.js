@@ -142,150 +142,150 @@ $(document).ready(function(){
 
 
 
-  //=========================================LOGIN=========================================//
-$(document).ready(function(){
-  function getUsers(){
-    const userData = localStorage.getItem('users');
-    return userData ? JSON.parse(userData) : [];
-  }
+//   //=========================================LOGIN=========================================//
+// $(document).ready(function(){
+//   function getUsers(){
+//     const userData = localStorage.getItem('users');
+//     return userData ? JSON.parse(userData) : [];
+//   }
 
-  function validateLogin(username, password){
-    const users = getUsers();
-    const user = users.find(u => u.username === username);
+//   function validateLogin(username, password){
+//     const users = getUsers();
+//     const user = users.find(u => u.username === username);
 
-    if (user && user.password === password){
-      localStorage.setItem('currentUser', JSON.stringify({id: user.id, name: user.name, img: user.imagen}));
-      return true;
-    } else{
-      return false;
-    }
-  }
+//     if (user && user.password === password){
+//       localStorage.setItem('currentUser', JSON.stringify({id: user.id, name: user.name, img: user.imagen}));
+//       return true;
+//     } else{
+//       return false;
+//     }
+//   }
 
-  $('#loginForm').submit(function(event){
-    event.preventDefault();
-    const username = $('#username').val();
-    const password = $('#password').val();
+//   $('#loginForm').submit(function(event){
+//     event.preventDefault();
+//     const username = $('#username').val();
+//     const password = $('#password').val();
 
-    if(validateLogin(username, password)){
-      window.location.href = 'newIndex.html';
-    } else {
-      alert('Usuario o contraseña incorrectos')
-    }
-  });
-});
+//     if(validateLogin(username, password)){
+//       window.location.href = 'newIndex.html';
+//     } else {
+//       alert('Usuario o contraseña incorrectos')
+//     }
+//   });
+// });
 
-  //=========================================Render navbar=========================================//
+//   //=========================================Render navbar=========================================//
 
-$(document).ready(function() {
-  function renderNavbarItems() {
-    const currentUser = localStorage.getItem('currentUser');
-    const navbarItems = $('#navbarItems');
-    navbarItems.empty();
+// // $(document).ready(function() {
+// //   function renderNavbarItems() {
+// //     const currentUser = localStorage.getItem('currentUser');
+// //     const navbarItems = $('#navbarItems');
+// //     navbarItems.empty();
 
-    if (currentUser) {
-      const user = JSON.parse(currentUser);
-      navbarItems.append(`<a href="perfil.html" class="nav-link active">Bienvenido, ${user.name}</a>`);
-    } else {
-      navbarItems.append('<a class="btn btn-success me-2" href="registrar.html">REGISTRARSE</a>');
-      navbarItems.append('<a class="btn btn-success me-2" href="login.html">INGRESAR</a>');
-    }
-  }
+// //     if (currentUser) {
+// //       const user = JSON.parse(currentUser);
+// //       navbarItems.append(`<a href="perfil.html" class="nav-link active">Bienvenido, ${user.name}</a>`);
+// //     } else {
+// //       navbarItems.append('<a class="btn btn-success me-2" href="registrar.html">REGISTRARSE</a>');
+// //       navbarItems.append('<a class="btn btn-success me-2" href="login.html">INGRESAR</a>');
+// //     }
+// //   }
 
-  renderNavbarItems();
-});
-
-
-  //=========================================Registrarse=========================================//
+// //   renderNavbarItems();
+// // });
 
 
-// Función para validar el formulario
+//   //=========================================Registrarse=========================================//
 
-$(document).ready(function(){
-  function getUsers(){
-    const userData = localStorage.getItem('users');
-    return userData ? JSON.parse(userData) : [];
-  }
 
-  function validarFormulario(){
+// // Función para validar el formulario
 
-  var nombre = $("#nombre").val();
-  var apellido = $("#apellido").val();
-  var correo = $("#correo").val();
-  var nombreUsuario = $("#nombreUsuario").val();
-  var password = $("#password").val();
-  var confirmPassword = $("#confirmPassword").val();
+// $(document).ready(function(){
+//   function getUsers(){
+//     const userData = localStorage.getItem('users');
+//     return userData ? JSON.parse(userData) : [];
+//   }
 
-  // Expresiones regulares para validar el correo electrónico y el nombre de usuario
-  var regexCorreo = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  var regexNombreUsuario = /^[a-zA-Z0-9_]+$/;
+//   function validarFormulario(){
 
-  // Validar nombre
-  if (nombre.trim() === "") {
-    alert("Por favor, ingrese su nombre.");
-    return false;
-  }
+//   var nombre = $("#nombre").val();
+//   var apellido = $("#apellido").val();
+//   var correo = $("#correo").val();
+//   var nombreUsuario = $("#nombreUsuario").val();
+//   var password = $("#password").val();
+//   var confirmPassword = $("#confirmPassword").val();
 
-  // Validar apellido
-  if (apellido.trim() === "") {
-    alert("Por favor, ingrese sus apellidos.");
-    return false;
-  }
+//   // Expresiones regulares para validar el correo electrónico y el nombre de usuario
+//   var regexCorreo = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+//   var regexNombreUsuario = /^[a-zA-Z0-9_]+$/;
 
-  // Validar correo electrónico
-  if (!regexCorreo.test(correo)) {
-    alert("Por favor, ingrese un correo electrónico válido.");
-    return false;
-  }
+//   // Validar nombre
+//   if (nombre.trim() === "") {
+//     alert("Por favor, ingrese su nombre.");
+//     return false;
+//   }
 
-  // Validar nombre de usuario
-  if (nombreUsuario.trim() === "") {
-    alert("Por favor, ingrese un nombre de usuario.");
-    return false;
-  }
-  if (!regexNombreUsuario.test(nombreUsuario)) {
-    alert("El nombre de usuario solo puede contener letras, números y guiones bajos.");
-    return false;
-  }
+//   // Validar apellido
+//   if (apellido.trim() === "") {
+//     alert("Por favor, ingrese sus apellidos.");
+//     return false;
+//   }
 
-  // Validar contraseña
-  if (password.trim() === "") {
-    alert("Por favor, ingrese una contraseña.");
-    return false;
-  }
+//   // Validar correo electrónico
+//   if (!regexCorreo.test(correo)) {
+//     alert("Por favor, ingrese un correo electrónico válido.");
+//     return false;
+//   }
 
-  // Validar confirmación de contraseña
-  if (password !== confirmPassword) {
-    alert("Las contraseñas no coinciden.");
-    return false;
-  }
+//   // Validar nombre de usuario
+//   if (nombreUsuario.trim() === "") {
+//     alert("Por favor, ingrese un nombre de usuario.");
+//     return false;
+//   }
+//   if (!regexNombreUsuario.test(nombreUsuario)) {
+//     alert("El nombre de usuario solo puede contener letras, números y guiones bajos.");
+//     return false;
+//   }
 
-  // Si todas las validaciones pasan, registrar el usuario
-  registrarUsuario(nombre, apellido, correo, nombreUsuario, password);
-  return true;
-}
+//   // Validar contraseña
+//   if (password.trim() === "") {
+//     alert("Por favor, ingrese una contraseña.");
+//     return false;
+//   }
 
-function registrarUsuario(nombre, apellido, correo, nombreUsuario, password){
-  let users = getUsers();
+//   // Validar confirmación de contraseña
+//   if (password !== confirmPassword) {
+//     alert("Las contraseñas no coinciden.");
+//     return false;
+//   }
 
-  var nuevoUsuario = {
-    name: nombre + " " + apellido,
-    email: correo,
-    username: nombreUsuario,
-    password: password
-  };
+//   // Si todas las validaciones pasan, registrar el usuario
+//   registrarUsuario(nombre, apellido, correo, nombreUsuario, password);
+//   return true;
+// }
 
-  users.push(nuevoUsuario);
-  localStorage.setItem('users', JSON.stringify(users));
-  window.location.href = 'newIndex.html';
-  }
+// function registrarUsuario(nombre, apellido, correo, nombreUsuario, password){
+//   let users = getUsers();
 
-  $("formRegistro").submit(function(event){
-    event.preventDefault();
-    if (validarFormulario()){
+//   var nuevoUsuario = {
+//     name: nombre + " " + apellido,
+//     email: correo,
+//     username: nombreUsuario,
+//     password: password
+//   };
 
-    }
-  });
-});
+//   users.push(nuevoUsuario);
+//   localStorage.setItem('users', JSON.stringify(users));
+//   window.location.href = 'newIndex.html';
+//   }
+
+//   $("formRegistro").submit(function(event){
+//     event.preventDefault();
+//     if (validarFormulario()){
+
+//     }
+//   });
+// });
 
 
 

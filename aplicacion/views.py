@@ -1,34 +1,17 @@
 import datetime
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 from aplicacion.models import Artista, Obras
 
 # Create your views here.
 
-def categoriaEdad(request, edad):
-    if edad >= 18:
-        if edad >= 60:
-            descripcion = "Viejo culiao"
-        else: 
-            descripcion = "Esta bien"
-    else:
-        descripcion = "Pendejo culiao"
-    resultado = "<h1>Categoria etaria: %s</h1>" %descripcion
 
-    return HttpResponse(resultado)
-
-def reloj(request):
-    respuesta = "<h1>Hora actual: {0}</h1>".format(datetime.datetime.now())
-    return HttpResponse(respuesta)
-
-def firstIndex(request):
-
-    favoriteNumbers = [1,2,3,4,5]
-
-    context={'mensaje': "Esto esta funcionando", 'favoriteNumbers':favoriteNumbers}
-    return render(request, 'index.html', context)
-
+def exit(request):
+    logout(request)
+    return redirect('/galeria/home')
 
 def home(request):
     ultimasObras = Obras.objects.order_by('id_obra')[:3]
@@ -50,16 +33,16 @@ def home(request):
     context={'mensaje': mensaje, 'ultimasObras':ultimasObras, 'artistas':artistas_data, 'obras':obras}
     return render(request, 'home.html', context)
 
+
+@login_required
 def obras_view(request):
     obras = Obras.objects.all()
     context = {'obras':obras}
     return render(request, 'obras.html', context)
-
+@login_required
 def artistas_view(request):
-
     obras = Obras.objects.all()
     artistas = Artista.objects.order_by('id_artista').all().prefetch_related('obras_set')
-
     artistas_data = []
     for artista in artistas:
         artistas_data.append({
@@ -72,12 +55,13 @@ def artistas_view(request):
 
     context={'artistas':artistas_data}
     return render(request, 'artistas.html', context)
-
+@login_required
 def obra_page(request, nombre):
     obra = get_object_or_404(Obras, nombre=nombre)
     context = {'obra': obra}
     return render(request, 'obraPage.html', context)
 
+@login_required
 def artista_page(request, nombre):
     artista = Artista.objects.get(nombre=nombre)
     obras = Obras.objects.filter(id_artista=artista)

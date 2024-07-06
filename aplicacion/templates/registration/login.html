@@ -1,0 +1,22 @@
+{% extends "firstTemplate.html" %}
+
+{% block title %} LOGIN {% endblock %}
+
+{% block content %}
+<br>
+<br>
+
+    <div class='conainer text-cemter'>
+        <h2>Login</h2>
+        <form method="post">
+    {% csrf_token %}
+    
+    <input type="text" name="username" id="" placeholder="Nombre de usuario">
+    <br>
+    <input type="password" name="password" id="" placeholder="Contraseña">
+    <br>
+    <button type="submit">Iniciar Sesión</button>
+  </form>
+</div>
+
+{% endblock %}

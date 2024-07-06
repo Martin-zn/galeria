@@ -16,11 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from aplicacion.views import categoriaEdad, reloj, firstIndex
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('categoriaEdad/<int:edad>', categoriaEdad),
-    path('reloj/', reloj),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('galeria/', include('aplicacion.urls')),
 ]
