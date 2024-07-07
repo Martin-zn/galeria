@@ -1,15 +1,22 @@
-
 {% extends "firstTemplate.html" %}
 {% block title %} ARTISTAS {% endblock %}
 
 {% block content %}
-
 <div class="container p-4">
+    <form method="get" action="{% url 'artistas' %}">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" name="q" placeholder="Nombre de artista" value="{{ query|default:'' }}">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+            </div>
+        </div>
+    </form>
+
     <div class="row p-4" id="allCardsContainer">
         {% for artista in artistas %}
             <div class="col-md-3 d-flex align-items-stretch">
                 <div class="card text-center card-custom">
-                    <a href="{% url 'artista_page' id=artista.id %}" >
+                    <a href="{% url 'artista_page' id=artista.id %}">
                         <img src="{{ artista.imgUrl }}" class="card-img-top card-img-top-custom img-thumbnail" alt="{{ artista.nombre }}">
                     </a>
                     <div class="card-body card-body-custom">
@@ -23,6 +30,4 @@
         {% endfor %}
     </div>
 </div>
-
-
 {% endblock %}

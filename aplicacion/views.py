@@ -44,15 +44,31 @@ def home(request):
 
 @login_required
 def obras_view(request):
-    obras = Obras.objects.all()
-    context = {'obras':obras}
+    query = request.GET.get('q')
+    if query:
+        obras = Obras.objects.filter(nombre__icontains=query) | Obras.objects.filter(usuario__username__icontains=query)
+    else:
+        obras = Obras.objects.all()
+    context = {'obras': obras, 'query': query}
     return render(request, 'obras.html', context)
 
 @login_required
 def artistas_view(request):
-
+    query = request.GET.get('q')
     User = get_user_model()
-    usuarios = User.objects.filter(is_active=True).annotate(cantidad_obras=Count('obras')).order_by('id')
+
+    if query:
+        usuarios = User.objects.filter(is_active=True).filter(
+            first_name__icontains=query
+        ) | User.objects.filter(
+            last_name__icontains=query
+        ).annotate(
+            cantidad_obras=Count('obras')
+        ).order_by('id')
+    else:
+        usuarios = User.objects.filter(is_active=True).annotate(
+            cantidad_obras=Count('obras')
+        ).order_by('id')
 
     usuarios_data = []
     for usuario in usuarios:
@@ -64,7 +80,7 @@ def artistas_view(request):
             'cantidad_obras': usuario.obras.count()
         })
 
-    context = {'artistas': usuarios_data}
+    context = {'artistas': usuarios_data, 'query': query}
     return render(request, 'artistas.html', context)
 
 
