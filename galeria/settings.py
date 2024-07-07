@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "crispy_forms",
+    "crispy_bootstrap5",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,7 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'aplicacion',
+    'user',
 ]
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -129,3 +135,6 @@ LOGIN_URL = '/accounts/login/'
 # LOGIN_REDIRECT_URL = '/home/'  # URL a la que redirigir después del login
 LOGIN_REDIRECT_URL = '/galeria/home/'  # URL a la que redirigir después del login
 LOGOUT_REDIRECT_URL = '/accounts/login/'  # URL a la que redirigir después del logout
+
+
+AUTH_USER_MODEL = 'user.User'

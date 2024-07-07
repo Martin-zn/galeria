@@ -1,0 +1,26 @@
+{% extends "firstTemplate.html" %}
+
+{% block title %} REGISTRARSE {% endblock %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<br>
+<br>
+<h2>REGISTRO DE USUSARIO</h2>
+<form method="post">
+{% csrf_token %}
+
+    <div class='container text-center'>
+
+        <h5>Complete todos los campos</h5>
+        
+            {{ form | crispy }}
+        
+        <button type="submit">Registrarse</button>
+
+    </div>
+</form>
+
+{% endblock %}

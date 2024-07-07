@@ -1,22 +1,26 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <body>
 
     <div class='container text-center'>
-        <h1 class="display-1">PRINCIPLAES ARTISTAS</h1>
+        <h1 class="display-1">NUEVOS ARTISTAS</h1>
         </div>
     <div class="artistas-container">
         <div class="container-fluid">
             <div class="row g-4">
-                {% for artista in artistas %}
+
+                {% for artista in usuarios %}
+
                 <div class="col">
                     <div class="artista-card">
-                        <a href="{% url 'artista_page' nombre=artista.nombre %}">
-                            <img src="{{ artista.imgUrl }}" class="artista-img" alt="{{ artista.nombre }}">
+                        <a href="{% url 'artista_page' id=artista.id %}">
+                            <img src="{{ artista.imgUrl }}" class="artista-img" alt="{{ artista.username }}">
                         </a>
                         <div class="card-body">
-                            <h5 class="card-title text-center">{{ artista.nombre }} {{ artista.apellido_paterno }} {{ artista.apellido_materno }}</h5>
+                            <h5 class="card-title text-center">{{ artista.username }}</h5>
+                            <h5 class="card-title text-center">{{ artista.first_name }} {{ artista.last_name }} </h5>
                             <p class="card-text text-center">{{ artista.descripcion|default:"sin descripcion" }}</p>
                             <p class="card-text text-center">Cantidad de obras: {{ artista.cantidad_obras }}</p>
                         </div>
@@ -31,7 +35,7 @@
     </div>
     <br/>
     <div class='container text-center'>
-        <h1 class="display-1">PRICIPALES OBRAS</h1>
+        <h1 class="display-1">NUEVAS OBRAS</h1>
         </div>
     <div class="artistas-container">
         <div class="container-fluid">
@@ -48,7 +52,7 @@
                                 
                             </div>
                             <div class="artist-name text-center">
-                                <p class="card-text">{{ obra.id_artista.nombre }} {{ obra.id_artista.apellido_paterno }} {{ obra.id_artista.apellido_materno }}</p>
+                                <p class="card-text">{{ obra.id_artista.username }}</p>
                             </div>
                         </div>
                     </div>

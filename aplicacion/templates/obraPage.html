@@ -13,7 +13,7 @@
             <h2>{{ obra.nombre }}</h2>
             <p><strong>Descripción:</strong> {{ obra.descripcion }}</p>
             <p><strong>Fecha de creación:</strong> {{ obra.fecha_creacion }}</p>
-            <p><strong>Artista:</strong> {{ obra.id_artista.nombre }} {{ obra.id_artista.apellido_paterno }} {{ obra.id_artista.apellido_materno }}</p>
+            <p><strong>Artista:</strong> {{ obra.usuario.first_name }} {{ obra.usuario.last_name }}</p>
         </div>
     </div>
 </div>

@@ -9,7 +9,9 @@ urlpatterns = [
     path('obras/', views.obras_view, name='obras'),
     path('artistas/', views.artistas_view, name='artistas'),
     path('obra/<str:nombre>/', views.obra_page, name='obra_page'),
-    path('artista/<str:nombre>/', views.artista_page, name='artista_page'),
+    path('artista/<int:id>/', views.artista_page, name='artista_page'),
     path('logout/', views.exit, name='exit'),
+    path('usuario/', views.user_page, name='user'),
+    path('register/', views.register, name='register'),
 
 ]
