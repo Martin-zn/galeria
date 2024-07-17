@@ -46,14 +46,19 @@
                             <a href="{% url 'obra_page' nombre=obra.nombre %}" >
                             <img src="{{ obra.imgUrl }}" class="artista-img" alt="{{ obra.nombre }}">
                             </a>
-                            <div class="card-body">
+                            <div class="card-body text-center p-2">
                                 <h5 class="card-title text-center">{{ obra.nombre }}</h5>
                                 <p class="card-text text-center">{{ obra.descripcion|default:"sin descripcion" }}</p>
-                                
+
+                                {% if obra.disponible %}
+                                    <h4 class="card-title">Valor: ${{ obra.precio }}</h4>
+                                    <a class="btn btn-primary" href="{% url 'agregar_obra' obra_id=obra.id_obra %}">Agregar a Carrito</a>
+                                {% else %}
+                                    <h4 class="card-title">No disponible</h4>
+                                {% endif %}
                             </div>
-                            <div class="artist-name text-center">
-                                <p class="card-text">{{ obra.id_artista.username }}</p>
-                            </div>
+
+                            
                         </div>
                     </div>
                 {% endfor %}

@@ -23,6 +23,12 @@
                         <h5 class="card-title">{{ obra.nombre }}</h5>
                         <p class="card-text">{{ obra.descripcion }}</p>
                         <p class="card-text">{{ obra.id_artista.first_name }}</p>
+                        {% if obra.disponible %}
+                            <h3 class="card-title">Valor: ${{ obra.precio }}</h3>
+                            <a class="btn btn-primary" href="{% url 'agregar_obra' obra_id=obra.id_obra %}">Agregar a Carrito</a>
+                        {% else %}
+                            <h3 class="card-title">No disponible</h3>
+                        {% endif %}
                     </div>
                 </div>
             </div>

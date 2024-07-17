@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, authenticate, login
+from aplicacion.Carrito import Carrito
 from aplicacion.models import Obras
 from .forms import CustomUserCreationForm
 from django.contrib.auth import get_user_model
@@ -142,6 +143,28 @@ def register(request):
     return render(request, 'registration/register.html', data)
 
 
+# Metodos para el carrito
+
+def agregar_obra(request, obra_id):
+    carrito = Carrito(request)
+    obra = get_object_or_404(Obras, id_obra=obra_id)
+    carrito.agregar(obra)
+    return redirect('carrito')
+
+def eliminar_obra(request, obra_id):
+    carrito = Carrito(request)
+    obra = get_object_or_404(Obras, id_obra=obra_id)
+    carrito.eliminar(obra)
+    return redirect('carrito')
+
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect('carrito')
+
+@login_required
+def carrito(request):
+    return render(request, 'carrito.html')
 
 
 

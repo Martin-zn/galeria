@@ -13,5 +13,9 @@ urlpatterns = [
     path('logout/', views.exit, name='exit'),
     path('usuario/', views.user_page, name='user'),
     path('register/', views.register, name='register'),
+    path('agregar/<int:obra_id>/', views.agregar_obra, name='agregar_obra'),
+    path('eliminar/<int:obra_id>/', views.eliminar_obra, name='eliminar_obra'),
+    path('limpiar/', views.limpiar_carrito, name='limpiar_carrito'),
+    path('carrito/', views.carrito, name='carrito'),
 
 ]

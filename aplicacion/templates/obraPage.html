@@ -14,7 +14,14 @@
             <p><strong>Descripción:</strong> {{ obra.descripcion }}</p>
             <p><strong>Fecha de creación:</strong> {{ obra.fecha_creacion }}</p>
             <p><strong>Artista:</strong> {{ obra.usuario.first_name }} {{ obra.usuario.last_name }}</p>
+            {% if obra.disponible %}
+                <h4 class="card-title">Valor: ${{ obra.precio }}</h4>
+                <a class="btn btn-primary" href="{% url 'agregar_obra' obra_id=obra.id_obra %}">Agregar a Carrito</a>
+            {% else %}
+                <h4 class="card-title">No disponible</h4>
+            {% endif %}
         </div>
+
     </div>
 </div>
 
