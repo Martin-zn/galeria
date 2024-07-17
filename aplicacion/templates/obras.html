@@ -2,7 +2,10 @@
 {% block title %} OBRAS {% endblock %}
 
 {% block content %}
-<div class="container p-4">
+<div class="container p-4 text-center" >
+
+    <h1>OBRAS</h1>
+
     <form method="get" action="{% url 'obras' %}">
         <div class="input-group mb-3">
             <input type="text" class="form-control" name="q" placeholder="Nombre de obra o artista" value="{{ query|default:'' }}">

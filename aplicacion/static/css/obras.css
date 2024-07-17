@@ -4,7 +4,8 @@
     margin-bottom: 20px; 
 }
 .card-img-top-custom {
-    height: 250px;
+    height: 400px; 
+    width: 300px; 
     object-fit: cover;
     width: 100%;
 }
